@@ -10,6 +10,8 @@ import { ArticlesService } from "../articles.service";
 export class ArticleDetailComponent implements OnInit {
 
   slug: string = null;
+  article: any = {title:'',author:{image:''}};
+  data:any = null;
 
   constructor(private route: ActivatedRoute, private articleService: ArticlesService) {
     this.route.params.subscribe( params => {
@@ -19,7 +21,8 @@ export class ArticleDetailComponent implements OnInit {
 
   ngOnInit() {
     this.articleService.getArticle(this.slug).subscribe(data => {
-      console.log(data.article)
+      this.article = data.article;
+      this.date = new Date(this.article.updatedAt).toDateString();
     })
   }
 

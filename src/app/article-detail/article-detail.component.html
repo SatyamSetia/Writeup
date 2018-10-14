@@ -1,6 +1,56 @@
-<div class="banner d-flex justify-content-center p-5">
-  <p class="banner-title m-3">A place to write and share your knowledge.</p>
+<div class="banner p-5">
+  <h1 class="text-light">{{article.title}}</h1>
+  <div class="d-flex justify-content-between">
+    <div class="d-flex">
+      <img src="{{article.author.image}}" alt="" height=35 width=35 class="rounded-circle mx-2">
+      <div class="d-flex flex-column align-items-start">
+        <span class="username text-light">{{article.author.username}}</span>
+        <span class="timestamp text-light">{{date}}</span>
+      </div>
+    </div>
+    <div>
+      <button class="icon-btn-light rounded mr-2 py-1">
+        <i class="material-icons mr-1">
+          person_add
+        </i>
+        <span>Follow {{article.author.username}}</span>
+      </button>
+      <button class="icon-btn-light rounded py-1">
+        <i class="material-icons mr-1">
+          favorite_border
+        </i>
+        <span class="count">({{article.favoritesCount}})</span>
+      </button>
+    </div>
+  </div>
 </div>
-<div>
-  article-detail works!
+<div class="container">
+  <h4 class="my-5 font-weight-normal">{{article.description}}</h4>
+  <hr>
+  <div class="d-flex justify-content-center">
+    <div class="d-flex mr-4">
+      <img src="{{article.author.image}}" alt="" height=35 width=35 class="rounded-circle mx-2">
+      <div class="d-flex flex-column align-items-start">
+        <span class="username">{{article.author.username}}</span>
+        <span class="timestamp text-secondary">{{date}}</span>
+      </div>
+    </div>
+    <div>
+      <button class="icon-btn-dark rounded mr-2 py-1">
+        <i class="material-icons mr-1">
+          person_add
+        </i>
+        <span>Follow {{article.author.username}}</span>
+      </button>
+      <button class="icon-btn-dark rounded py-1">
+        <i class="material-icons mr-1">
+          favorite_border
+        </i>
+        <span class="count">({{article.favoritesCount}})</span>
+      </button>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center my-5">
+    Sign in or Sign up to add comments on this article.
+  </div>
 </div>
