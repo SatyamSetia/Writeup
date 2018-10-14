@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes');
+
+.footer {
+  background-color: #f3f3f3;
+}
+
+.footer-title {
+  font-family: 'Great Vibes', cursive;
+  color: #C84E90;
+  font-size: 1.5rem;
+}
+
+.footer-text {
+  font-size: 0.75rem;
+}

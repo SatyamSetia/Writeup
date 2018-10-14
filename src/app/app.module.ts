@@ -7,6 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { ContentComponent } from './content/content.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleListItemComponent } from './article-list-item/article-list-item.component';
+import { TagListComponent } from './tag-list/tag-list.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { ArticleListItemComponent } from './article-list-item/article-list-item.
     HeaderComponent,
     ContentComponent,
     ArticleListComponent,
-    ArticleListItemComponent
+    ArticleListItemComponent,
+    TagListComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
