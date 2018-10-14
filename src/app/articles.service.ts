@@ -17,7 +17,7 @@ export class ArticlesService {
   }
 
   getArticle(slug) {
-    return this.http.get(`${this.BASE_URL}/articles/slug`)
+    return this.http.get(`${this.BASE_URL}/articles/${slug}`)
   }
 
   getAllTags() {

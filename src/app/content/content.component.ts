@@ -17,8 +17,6 @@ export class ContentComponent implements OnInit {
       .subscribe(data => {
         this.articles = data.articles
       })
-    this.articlesService.getArticle("aa-bb-ccd-ryyn03")
-      .subscribe(data => console.log(data))
   }
 
 }
