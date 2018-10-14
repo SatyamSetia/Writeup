@@ -1,0 +1,27 @@
+.username {
+  font-size: 0.9rem;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.favorite-btn {
+  background: none;
+  border: #C84E90 solid 1px;
+  color: #C84E90;
+  font-size: 1.1rem;
+}
+
+.favorite-btn:hover {
+  background-color: #C84E90;
+  color: #ffffff;
+}
+
+i{
+  font-size: 1rem;
+}
