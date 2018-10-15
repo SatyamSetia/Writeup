@@ -4,7 +4,7 @@
     <div class="d-flex">
       <img src="{{article.author.image}}" alt="" height=35 width=35 class="rounded-circle mx-2">
       <div class="d-flex flex-column align-items-start">
-        <span class="username">{{article.author.username}}</span>
+        <a routerLink="/@{{article.author.username}}"><span class="username">{{article.author.username}}</span></a>
         <span class="timestamp text-secondary">{{date}}</span>
       </div>
     </div>

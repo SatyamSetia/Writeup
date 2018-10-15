@@ -11,6 +11,7 @@ import { ArticleListItemComponent } from './article-list-item/article-list-item.
 import { TagListComponent } from './tag-list/tag-list.component';
 import { FooterComponent } from './footer/footer.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const appRoutes: Routes = [
   {
@@ -20,6 +21,10 @@ const appRoutes: Routes = [
   {
     path: 'article/:slug',
     component: ArticleDetailComponent
+  },
+  {
+    path: ':username',
+    component: UserDetailComponent
   }
 ]
 
@@ -32,7 +37,8 @@ const appRoutes: Routes = [
     ArticleListItemComponent,
     TagListComponent,
     FooterComponent,
-    ArticleDetailComponent
+    ArticleDetailComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
