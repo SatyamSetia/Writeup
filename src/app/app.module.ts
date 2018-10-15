@@ -15,6 +15,8 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { TabButtonComponent } from './tab-button/tab-button.component';
 import { SigninPageComponent } from './signin-page/signin-page.component';
+import { FormComponent } from './form/form.component';
+import { SignupPageComponent } from './signup-page/signup-page.component'
 
 const appRoutes: Routes = [
   {
@@ -28,6 +30,10 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: SigninPageComponent
+  },
+  {
+    path: 'register',
+    component: SignupPageComponent
   },
   {
     path: ':username',
@@ -47,7 +53,9 @@ const appRoutes: Routes = [
     ArticleDetailComponent,
     UserDetailComponent,
     TabButtonComponent,
-    SigninPageComponent
+    SigninPageComponent,
+    FormComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,20 @@
+<div class="container text-sm-center">
+  <h1 class="font-weight-light">Sign up</h1>
+  <h6 class="font-weight-normal signin-btn">Have an account?</h6>
+  <div class="row">
+    <div class="col-sm-3">
+
+    </div>
+    <form class="form-group col-sm-6" (ngSubmit)="registerUser(signupForm.value)" #signupForm="ngForm">
+      <input type="text" [(ngModel)]="username" name="username" class="username form-control my-3 p-4" placeholder="Username" required autocomplete="off">
+      <input type="text" [(ngModel)]="email" name="email" class="form-control my-3 p-4" placeholder="Email" required autocomplete="off">
+      <input type="password" [(ngModel)]="password" name="password" class="form-control my-3 p-4" placeholder="Password" required>
+      <div class="d-flex justify-content-end submit-btn">
+        <input type="submit" value="Sign up" class="btn btn-dark">
+      </div>
+    </form>
+    <div class="col-sm-3">
+
+    </div>
+  </div>
+</div>

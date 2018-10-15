@@ -21,4 +21,8 @@ export class UsersService {
   authenticate(user) {
     return this.http.post(`${this.BASE_URL}/users/login`, user, this.httpOptions)
   }
+
+  register(user) {
+    return this.http.post(`${this.BASE_URL}/users`, user, this.httpOptions)
+  }
 }
