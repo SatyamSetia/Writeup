@@ -3,6 +3,7 @@
 </div>
 <div class="row mx-5 my-3">
   <div class="col-sm-8">
+    <app-tab-button label="Global Feed" (tabClicked)='handleTab($event)'></app-tab-button>
     <app-article-list [articles]="articles"></app-article-list>
   </div>
   <div class="col-sm-3">

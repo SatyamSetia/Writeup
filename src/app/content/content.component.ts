@@ -19,4 +19,8 @@ export class ContentComponent implements OnInit {
       })
   }
 
+  handleTab(e) {
+    console.log(e)
+  }
+
 }
