@@ -1,0 +1,19 @@
+.banner {
+  background-color: #f3f3f3;
+}
+
+.icon-btn-dark {
+  background: none;
+  border: #C84E90 solid 1px;
+  color: #C84E90;
+  font-size: 0.8rem;
+}
+
+.icon-btn-dark:hover {
+  background-color: #C84E90;
+  color: #ffffff;
+}
+
+i{
+  font-size: 1rem;
+}

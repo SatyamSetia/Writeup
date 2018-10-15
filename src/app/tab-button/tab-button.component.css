@@ -1,0 +1,10 @@
+.tab {
+  background: none;
+  border: none;
+  outline: none;
+  color: #aaa;
+}
+
+.tab:hover {
+  color: #000;
+}

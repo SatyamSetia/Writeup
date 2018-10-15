@@ -12,6 +12,7 @@ import { TagListComponent } from './tag-list/tag-list.component';
 import { FooterComponent } from './footer/footer.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { TabButtonComponent } from './tab-button/tab-button.component';
 
 const appRoutes: Routes = [
   {
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     TagListComponent,
     FooterComponent,
     ArticleDetailComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    TabButtonComponent
   ],
   imports: [
     BrowserModule,

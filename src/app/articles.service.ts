@@ -16,6 +16,14 @@ export class ArticlesService {
     return this.http.get(`${this.BASE_URL}/articles`)
   }
 
+  getAllUserArticles(username) {
+    return this.http.get(`${this.BASE_URL}/articles?author=${username}`)
+  }
+
+  getAllFavoritedArticles(username) {
+    return this.http.get(`${this.BASE_URL}/articles?favorited=${username}`)
+  }
+
   getArticle(slug) {
     return this.http.get(`${this.BASE_URL}/articles/${slug}`)
   }
