@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 import { UsersService } from '../users.service';
+import { AuthTokenService } from '../auth-token.service';
 
 @Component({
   selector: 'app-signin-page',
@@ -8,7 +10,7 @@ import { UsersService } from '../users.service';
 })
 export class SigninPageComponent implements OnInit {
 
-  constructor(private userService: UsersService) { }
+  constructor(private userService: UsersService, private authTokenService: AuthTokenService, private route: Router, private active: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -19,7 +21,17 @@ export class SigninPageComponent implements OnInit {
         email:inputs.email,
         password:inputs.password
       }
-    }).subscribe(data => console.log(data.user.token))
-  }
+    }).subscribe(data => {
+        this.authTokenService.saveToken(data.user.token)
+      },
+      err => {
+        console.log(err)
+      },
+      () => {
+        console.log('logged in')
+        this.route.navigate([''])
+      }
+    )
+  })
 
 }
