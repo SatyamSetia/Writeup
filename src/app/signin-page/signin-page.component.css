@@ -1,0 +1,14 @@
+.btn-dark {
+  background-color: #C84E90;
+  outline: none;
+  border-color: #C84E90;
+  height: 2.75rem;
+}
+
+.form-control {
+  font-size: 1.25rem;
+}
+
+.signup-btn {
+  color: #C84E90;
+}

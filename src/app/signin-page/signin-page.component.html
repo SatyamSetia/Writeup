@@ -1,0 +1,19 @@
+<div class="container text-sm-center">
+  <h1 class="font-weight-light">Sign in</h1>
+  <h6 class="font-weight-normal signup-btn">Need an account?</h6>
+  <div class="row">
+    <div class="col-sm-3">
+
+    </div>
+    <form class="form-group col-sm-6" (ngSubmit)="authenticateUser(loginForm.value)" #loginForm="ngForm">
+      <input type="text" [(ngModel)]="email" name="email" class="form-control my-3 p-4" placeholder="Email" required autocomplete="off">
+      <input type="password" [(ngModel)]="password" name="password" class="form-control my-3 p-4" placeholder="Password" required>
+      <div class="d-flex justify-content-end">
+        <input type="submit" value="Sign in" class="btn btn-dark">
+      </div>
+    </form>
+    <div class="col-sm-3">
+
+    </div>
+  </div>
+</div>

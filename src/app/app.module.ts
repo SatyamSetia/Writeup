@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule }   from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,6 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { TabButtonComponent } from './tab-button/tab-button.component';
+import { SigninPageComponent } from './signin-page/signin-page.component';
 
 const appRoutes: Routes = [
   {
@@ -22,6 +24,10 @@ const appRoutes: Routes = [
   {
     path: 'article/:slug',
     component: ArticleDetailComponent
+  },
+  {
+    path: 'login',
+    component: SigninPageComponent
   },
   {
     path: ':username',
@@ -40,11 +46,13 @@ const appRoutes: Routes = [
     FooterComponent,
     ArticleDetailComponent,
     UserDetailComponent,
-    TabButtonComponent
+    TabButtonComponent,
+    SigninPageComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
