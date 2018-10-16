@@ -32,6 +32,6 @@ export class SigninPageComponent implements OnInit {
         this.route.navigate([''])
       }
     )
-  })
+  }
 
 }
