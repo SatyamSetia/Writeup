@@ -10,6 +10,8 @@ import { AuthTokenService } from '../auth-token.service';
 })
 export class SignupPageComponent implements OnInit {
 
+  formLabel: string = "Sign up";
+
   constructor(private userService: UsersService, private authTokenService: AuthTokenService, private route: Router, private active: ActivatedRoute) { }
 
   ngOnInit() {

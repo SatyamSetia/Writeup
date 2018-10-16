@@ -5,13 +5,9 @@
     <div class="col-sm-3">
 
     </div>
-    <form class="form-group col-sm-6" (ngSubmit)="authenticateUser(loginForm.value)" #loginForm="ngForm">
-      <input type="text" [(ngModel)]="email" name="email" class="form-control my-3 p-4" placeholder="Email" required autocomplete="off">
-      <input type="password" [(ngModel)]="password" name="password" class="form-control my-3 p-4" placeholder="Password" required>
-      <div class="d-flex justify-content-end">
-        <input type="submit" value="Sign in" class="btn btn-dark">
-      </div>
-    </form>
+    <div class="col-sm-6">
+      <app-form (formInputs)='authenticateUser($event)' [label]="formLabel"></app-form>
+    </div>
     <div class="col-sm-3">
 
     </div>

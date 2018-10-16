@@ -1,0 +1,8 @@
+<form class="form-group" (ngSubmit)="onSubmit()" [formGroup]="userInputs">
+  <input *ngIf="isSignupForm" type="text" formControlName="username" class="username form-control my-3 p-4" placeholder="Username" required autocomplete="off">
+  <input type="text" formControlName="email" class="form-control my-3 p-4" placeholder="Email" required autocomplete="off">
+  <input type="password" formControlName="password" class="form-control my-3 p-4" placeholder="Password" required>
+  <div class="d-flex justify-content-end">
+    <input type="submit" value="{{label}}" class="btn btn-dark" [disabled]="!userInputs.valid">
+  </div>
+</form>
