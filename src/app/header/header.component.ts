@@ -19,4 +19,8 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  logoutClicked() {
+    this.userService.logout();
+  }
+
 }

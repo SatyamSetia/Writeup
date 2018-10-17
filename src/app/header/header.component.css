@@ -37,3 +37,8 @@ i {
 .logout {
   font-size: 1.5rem;
 }
+
+button {
+  background: none;
+  border: none;
+}

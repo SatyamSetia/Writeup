@@ -14,4 +14,8 @@ export class AuthTokenService {
   getToken() {
     return window.localStorage.getItem('authToken');
   }
+
+  deleteToken() {
+    window.localStorage.removeItem('authToken');
+  }
 }

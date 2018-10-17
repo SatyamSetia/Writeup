@@ -34,4 +34,8 @@ export class SettingsComponent implements OnInit {
     }).subscribe(data => console.log(data))
   }
 
+  logoutClicked() {
+    this.userService.logout();
+  }
+
 }

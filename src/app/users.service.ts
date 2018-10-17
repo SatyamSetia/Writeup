@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -19,7 +20,7 @@ export class UsersService {
     'Content-Type':  'application/json',
   }
 
-  constructor(private http: HttpClient, private authTokenService: AuthTokenService) { }
+  constructor(private http: HttpClient, private authTokenService: AuthTokenService, private route: Router) { }
 
   getUser(username) {
     return this.http.get(`${this.BASE_URL}/profiles/${username}`)
@@ -34,6 +35,12 @@ export class UsersService {
 
   register(user) {
     return this.http.post(`${this.BASE_URL}/users`, user, this.httpOptions)
+  }
+
+  logout() {
+    this.authTokenService.deleteToken();
+    this.isLoggedIn.next(false)
+    this.route.navigate(['/login']);
   }
 
   ensureLoggedIn() {
