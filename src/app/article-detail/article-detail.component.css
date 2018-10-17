@@ -3,7 +3,7 @@
   box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
 }
 
-.username {
+a {
   font-size: 0.9rem;
   color: #C84E90;
 }
