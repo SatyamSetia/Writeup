@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from '../users.service';
 import { AuthTokenService } from '../auth-token.service';
 
@@ -19,13 +19,13 @@ export class SigninPageComponent implements OnInit {
 
   authenticateUser(inputs) {
     this.userService.authenticate({
-      user : {
-        email:inputs.email,
-        password:inputs.password
+      user: {
+        email: inputs.email,
+        password: inputs.password
       }
     }).subscribe(data => {
-        this.authTokenService.saveToken(data.user.token)
-      },
+      this.authTokenService.saveToken(data.user.token)
+    },
       err => {
         console.log(err)
       },

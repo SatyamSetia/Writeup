@@ -16,7 +16,9 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { TabButtonComponent } from './tab-button/tab-button.component';
 import { SigninPageComponent } from './signin-page/signin-page.component';
 import { FormComponent } from './form/form.component';
-import { SignupPageComponent } from './signup-page/signup-page.component'
+import { SignupPageComponent } from './signup-page/signup-page.component';
+import { SettingsComponent } from './settings/settings.component';
+import { AuthGuard } from './auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -34,6 +36,11 @@ const appRoutes: Routes = [
   {
     path: 'register',
     component: SignupPageComponent
+  },
+  {
+    path: 'settings',
+    canActivate: [AuthGuard],
+    component: SettingsComponent
   },
   {
     path: ':username',
@@ -55,7 +62,8 @@ const appRoutes: Routes = [
     TabButtonComponent,
     SigninPageComponent,
     FormComponent,
-    SignupPageComponent
+    SignupPageComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

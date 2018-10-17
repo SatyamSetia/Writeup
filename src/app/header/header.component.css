@@ -10,16 +10,18 @@
   font-size: 2.5rem;
 }
 
-.btn-outline-dark {
-  color: #C84E90;
-  border: none;
-}
-
-.btn-outline-dark:hover {
-  background-color: #C84E90;
-  color: #ffffff;
-}
-
 a:hover {
   text-decoration: none;
+}
+
+.button-link.active-link {
+  color: #C84E90;
+}
+
+.button-link {
+  color: #b6b6b6;
+}
+
+.button-link:hover {
+  color: #000000;
 }

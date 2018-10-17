@@ -5,8 +5,14 @@
     </h2>
   </a>
   <div class="">
-    <a class="btn btn-outline-dark mx-2" routerLink="/">Home</a>
-    <a class="btn btn-outline-dark mx-2" routerLink="/login">Sign in</a>
-    <a class="btn btn-outline-dark mx-2" routerLink="/register">Sign up</a>
+    <div class="pt-2" *ngIf="isLoggedIn; else notLogged">
+      <a class="button-link mx-2" routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a class="button-link mx-2" routerLink="/settings" routerLinkActive="active-link">Settings</a>
+    </div>
+    <ng-template #notLogged class="pt-2">
+      <a class="button-link mx-2" routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a class="button-link mx-2" routerLink="/login" routerLinkActive="active-link">Sign in</a>
+      <a class="button-link mx-2" routerLink="/register" routerLinkActive="active-link">Sign up</a>
+    </ng-template>
   </div>
 </div>

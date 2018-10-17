@@ -11,7 +11,7 @@ export class AuthTokenService {
     window.localStorage.setItem('authToken',token);
   }
 
-  getToken(token) {
-    window.localStorage.getItem('authToken');
+  getToken() {
+    return window.localStorage.getItem('authToken');
   }
 }
