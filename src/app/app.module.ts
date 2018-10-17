@@ -19,6 +19,7 @@ import { FormComponent } from './form/form.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AuthGuard } from './auth.guard';
+import { NewArticleComponent } from './new-article/new-article.component';
 
 const appRoutes: Routes = [
   {
@@ -43,6 +44,11 @@ const appRoutes: Routes = [
     component: SettingsComponent
   },
   {
+    path: 'editor',
+    canActivate: [AuthGuard],
+    component: NewArticleComponent
+  },
+  {
     path: ':username',
     component: UserDetailComponent
   }
@@ -63,7 +69,8 @@ const appRoutes: Routes = [
     SigninPageComponent,
     FormComponent,
     SignupPageComponent,
-    SettingsComponent
+    SettingsComponent,
+    NewArticleComponent
   ],
   imports: [
     BrowserModule,

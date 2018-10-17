@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-sm-3">
+
+  </div>
+  <div class="col-sm-6 mb-4">
+    <form class="form-group" (ngSubmit)="onSubmit()" [formGroup]="userInputs">
+      <input type="text" formControlName="title" class="form-control my-3 p-4" placeholder="Article Title" required autocomplete="off">
+      <input type="text" formControlName="description" class="form-control my-3 p-4" placeholder="What's this article about?" required autocomplete="off">
+      <textarea formControlName="body" rows="8" cols="80" class="form-control my-3 p-4" placeholder="Write your article here..."></textarea>
+      <input type="text" formControlName="tags" class="form-control my-3 p-4" placeholder="Enter tags" required autocomplete="off">
+      <div class="d-flex justify-content-end">
+        <input type="submit" value="Publish" class="btn btn-dark" [disabled]="!userInputs.valid">
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-3">
+
+  </div>
+</div>
