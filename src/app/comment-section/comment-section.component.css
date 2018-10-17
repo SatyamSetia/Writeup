@@ -1,0 +1,17 @@
+.comment-footer {
+  background-color: #e5e5e5;
+}
+
+.comment-box {
+  border: 1px solid #e5e5e5;
+}
+
+.form-control {
+  border: none;
+}
+
+.post-btn {
+  font-size: 0.8rem;
+  background-color: #C84E90;
+  border: none;
+}

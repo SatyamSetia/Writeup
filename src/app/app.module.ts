@@ -20,6 +20,9 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AuthGuard } from './auth.guard';
 import { NewArticleComponent } from './new-article/new-article.component';
+import { CommentSectionComponent } from './comment-section/comment-section.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
+import { CommentListItemComponent } from './comment-list-item/comment-list-item.component';
 
 const appRoutes: Routes = [
   {
@@ -70,7 +73,10 @@ const appRoutes: Routes = [
     FormComponent,
     SignupPageComponent,
     SettingsComponent,
-    NewArticleComponent
+    NewArticleComponent,
+    CommentSectionComponent,
+    CommentListComponent,
+    CommentListItemComponent
   ],
   imports: [
     BrowserModule,

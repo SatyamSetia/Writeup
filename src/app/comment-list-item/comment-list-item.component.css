@@ -1,0 +1,17 @@
+.comment-footer {
+  background-color: #e5e5e5;
+}
+
+.comment-box {
+  border: 1px solid #e5e5e5;
+}
+
+.author {
+  font-size: 0.8rem;
+  color: #C84E90;
+}
+
+.timestamp {
+  font-size: 0.8rem;
+  color: #ababab;
+}
