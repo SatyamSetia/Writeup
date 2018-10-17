@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -42,5 +42,16 @@ export class UsersService {
     } else {
       return false;
     }
+  }
+
+  updateUser(user) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+ this.authTokenService.getToken();
+    });
+    let httpOptions = {
+      headers: headers
+    }
+    return this.http.put(`${this.BASE_URL}/user`,user,httpOptions)
   }
 }
