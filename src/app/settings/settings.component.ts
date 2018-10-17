@@ -27,7 +27,7 @@ export class SettingsComponent implements OnInit {
       user: {
         email: this.userInputs.value.email,
         bio: this.userInputs.value.bio,
-        image: this.userInputs.value.image,
+        image: this.userInputs.value.url,
         username: this.userInputs.value.username,
         password: this.userInputs.value.password
       }

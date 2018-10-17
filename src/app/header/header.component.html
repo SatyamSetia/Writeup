@@ -4,7 +4,7 @@
       Writeup
     </h2>
   </a>
-  <div class="">
+  <div class="d-flex">
     <div class="pt-2" *ngIf="isLoggedIn; else notLogged">
       <a class="button-link mx-2" routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Home</a>
       <a class="button-link mx-2" routerLink="/editor" routerLinkActive="active-link">
@@ -18,6 +18,11 @@
           settings
         </i>
         Settings
+      </a>
+      <a class="button-link ml-2 logout-btn" routerLink="/logout" routerLinkActive="active-link">
+        <i class="material-icons logout">
+          exit_to_app
+        </i>
       </a>
     </div>
     <ng-template #notLogged class="pt-2">
