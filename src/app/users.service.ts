@@ -28,7 +28,7 @@ export class UsersService {
 
   authenticate(user) {
     return this.http.post(`${this.BASE_URL}/users/login`, user, this.httpOptions).pipe(map(data => {
-      this.isLoggedIn.next(true)
+      this.isLoggedIn.next(true);
       return data;
     }))
   }
@@ -39,7 +39,7 @@ export class UsersService {
 
   logout() {
     this.authTokenService.deleteToken();
-    this.isLoggedIn.next(false)
+    this.isLoggedIn.next(false);
     this.route.navigate(['/login']);
   }
 
@@ -60,5 +60,16 @@ export class UsersService {
       headers: headers
     }
     return this.http.put(`${this.BASE_URL}/user`,user,httpOptions)
+  }
+
+  getCurrentUser() {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+ this.authTokenService.getToken();
+    })
+    let httpOptions = {
+      headers: headers
+    }
+    return this.http.get(`${this.BASE_URL}/user`,httpOptions);
   }
 }

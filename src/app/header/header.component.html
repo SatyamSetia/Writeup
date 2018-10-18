@@ -19,6 +19,10 @@
         </i>
         Settings
       </a>
+      <a class="button-link mx-2" routerLink="/@{{currUser.username}}" routerLinkActive="active-link">
+        <img src="{{currUser.image}}" height=25 width=25 class="rounded-circle">
+        {{currUser.username}}
+      </a>
       <button class="button-link ml-2 logout-btn" (click)="logoutClicked()">
         <i class="material-icons logout">
           exit_to_app
