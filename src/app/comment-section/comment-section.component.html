@@ -1,10 +1,10 @@
 <div class="">
   <div class="rounded comment-box">
     <form class="d-flex flex-column" [formGroup]="userInputs" (ngSubmit)="onSubmit()">
-      <textarea name="comment" rows="4" cols="80" placeholder="Write a comment..." class="form-control p-3"></textarea>
+      <textarea formControlName="comment" rows="4" cols="80" placeholder="Write a comment..." class="form-control p-3"></textarea>
       <div class="d-flex justify-content-between comment-footer p-2">
-        <div class="">
-          <img src="" class="rounded-circle" height=35 width=35>
+        <div class="mx-3">
+          <img src="{{currUser.image}}" class="rounded-circle" height=30 width=30>
         </div>
         <input type="submit" name="submit" value="Post Comment" class="post-btn btn btn-primary">
       </div>
