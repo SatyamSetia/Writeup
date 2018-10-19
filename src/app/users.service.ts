@@ -80,4 +80,44 @@ export class UsersService {
     }
     return this.http.get(`${this.BASE_URL}/user`,httpOptions);
   }
+
+  followUser(username) {
+    let headers;
+
+    if(this.ensureLoggedIn()){
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Token '+ this.authTokenService.getToken();
+      });
+    } else {
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json'
+      });
+    }
+    let httpOptions = {
+      headers: headers
+    }
+
+    return this.http.post(`${this.BASE_URL}/profiles/${username}/follow`,{},httpOptions)
+  }
+
+  unfollowUser(username) {
+    let headers;
+
+    if(this.ensureLoggedIn()){
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Token '+ this.authTokenService.getToken();
+      });
+    } else {
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json'
+      });
+    }
+    let httpOptions = {
+      headers: headers
+    }
+
+    return this.http.delete(`${this.BASE_URL}/profiles/${username}/follow`,httpOptions)
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { UsersService } from '../users.service';
 import { ArticlesService } from '../articles.service';
 
@@ -14,8 +14,8 @@ export class UserDetailComponent implements OnInit {
   username: string;
   articles = [];
 
-  constructor(private userService: UsersService, private articlesService: ArticlesService, private route: ActivatedRoute) {
-    this.route.params.subscribe( params => {
+  constructor(private userService: UsersService, private articlesService: ArticlesService, private active: ActivatedRoute, private route: Router) {
+    this.active.params.subscribe( params => {
         this.username = params.username
     });
   }
@@ -37,6 +37,23 @@ export class UserDetailComponent implements OnInit {
     this.articlesService.getAllFavoritedArticles(this.username.substring(1)).subscribe(data => {
       this.articles = data.articles;
     })
+  }
+
+  toggleFollow() {
+    if(this.userService.ensureLoggedIn()) {
+      if(this.user.following) {
+        this.userService.unfollowUser(this.user.username).subscribe(data => {
+          this.user = data.profile
+        })
+      } else {
+        this.userService.followUser(this.user.username).subscribe(data => {
+          this.user = data.profile
+        })
+      }
+
+    } else {
+      this.route.navigate(['/login'])
+    }
   }
 
   handleTab(e) {

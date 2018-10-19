@@ -2,16 +2,23 @@
   background-color: #f3f3f3;
 }
 
-.icon-btn-dark {
+.icon-btn-fav-dark {
   background: none;
   border: #C84E90 solid 1px;
   color: #C84E90;
   font-size: 0.8rem;
 }
 
-.icon-btn-dark:hover {
+.icon-btn-fav-dark:hover {
   background-color: #C84E90;
   color: #ffffff;
+}
+
+.icon-btn-unfav-dark {
+  background-color: #C84E90;
+  border: #C84E90 solid 1px;
+  color: #ffffff;
+  font-size: 0.8rem;
 }
 
 i{

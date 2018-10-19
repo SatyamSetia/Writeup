@@ -15,11 +15,12 @@
       </div>
     </div>
     <div>
-      <button class="icon-btn-fav-light rounded mr-2 py-1">
+      <button class="rounded mr-2 py-1" (click)="toggleFollow()" [ngClass]="{'icon-btn-fav-light': !article.author.following, 'icon-btn-unfav-light': article.author.following}">
         <i class="material-icons mr-1">
           person_add
         </i>
-        <span>Follow {{article.author.username}}</span>
+        <span>{{article.author.following?'Unfollow':'Follow'}} </span>
+        <span>{{article.author.username}}</span>
       </button>
       <button class="rounded py-1" (click)="toggleFavorite()" [ngClass]="{'icon-btn-fav-light': !article.favorited, 'icon-btn-unfav-light': article.favorited}">
         <i class="material-icons mr-1">
@@ -48,11 +49,12 @@
       </div>
     </div>
     <div>
-      <button class="icon-btn-fav-dark rounded mr-2 py-1">
+      <button class="rounded mr-2 py-1" (click)="toggleFollow()" [ngClass]="{'icon-btn-fav-dark': !article.author.following, 'icon-btn-unfav-dark': article.author.following}">
         <i class="material-icons mr-1">
           person_add
         </i>
-        <span>Follow {{article.author.username}}</span>
+        <span>{{article.author.following?'Unfollow':'Follow'}} </span>
+        <span>{{article.author.username}}</span>
       </button>
       <button class="rounded py-1" (click)="toggleFavorite()" [ngClass]="{'icon-btn-fav-dark': !article.favorited, 'icon-btn-unfav-dark': article.favorited}">
         <i class="material-icons mr-1">

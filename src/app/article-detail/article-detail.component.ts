@@ -22,13 +22,34 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.fetchArticle()
+    this.userService.isLoggedInObservable.subscribe(data => {
+      this.isLoggedIn = data;
+    })
+  }
+
+  fetchArticle() {
     this.articleService.getArticle(this.slug).subscribe(data => {
       this.article = data.article;
       this.date = new Date(this.article.updatedAt).toDateString();
     })
-    this.userService.isLoggedInObservable.subscribe(data => {
-      this.isLoggedIn = data;
-    })
+  }
+
+  toggleFollow() {
+    if(this.userService.ensureLoggedIn()) {
+      if(this.article.author.following) {
+        this.userService.unfollowUser(this.article.author.username).subscribe(data => {
+          this.fetchArticle()
+        })
+      } else {
+        this.userService.followUser(this.article.author.username).subscribe(data => {
+          this.fetchArticle()
+        })
+      }
+
+    } else {
+      this.route.navigate(['/login'])
+    }
   }
 
   toggleFavorite() {
