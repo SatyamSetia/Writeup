@@ -15,13 +15,13 @@
       </div>
     </div>
     <div>
-      <button class="icon-btn-light rounded mr-2 py-1">
+      <button class="icon-btn-fav-light rounded mr-2 py-1">
         <i class="material-icons mr-1">
           person_add
         </i>
         <span>Follow {{article.author.username}}</span>
       </button>
-      <button class="icon-btn-light rounded py-1">
+      <button class="rounded py-1" (click)="toggleFavorite()" [ngClass]="{'icon-btn-fav-light': !article.favorited, 'icon-btn-unfav-light': article.favorited}">
         <i class="material-icons mr-1">
           favorite_border
         </i>
@@ -48,13 +48,13 @@
       </div>
     </div>
     <div>
-      <button class="icon-btn-dark rounded mr-2 py-1">
+      <button class="icon-btn-fav-dark rounded mr-2 py-1">
         <i class="material-icons mr-1">
           person_add
         </i>
         <span>Follow {{article.author.username}}</span>
       </button>
-      <button class="icon-btn-dark rounded py-1">
+      <button class="rounded py-1" (click)="toggleFavorite()" [ngClass]="{'icon-btn-fav-dark': !article.favorited, 'icon-btn-unfav-dark': article.favorited}">
         <i class="material-icons mr-1">
           favorite_border
         </i>

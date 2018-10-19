@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AuthTokenService } from './auth-token.service.ts';
+import { AuthTokenService } from './auth-token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -63,10 +63,18 @@ export class UsersService {
   }
 
   getCurrentUser() {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization':'Token '+ this.authTokenService.getToken();
-    })
+    let headers;
+
+    if(this.ensureLoggedIn()){
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Token '+ this.authTokenService.getToken();
+      });
+    } else {
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json'
+      });
+    }
     let httpOptions = {
       headers: headers
     }

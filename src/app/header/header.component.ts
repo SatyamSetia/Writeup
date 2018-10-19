@@ -22,9 +22,11 @@ export class HeaderComponent implements OnInit {
       console.log(this.isLoggedIn)
     })
 
-    this.userService.getCurrentUser().subscribe(data => {
-      this.currUser = data.user
-    })
+    if(this.userService.ensureLoggedIn()) {
+      this.userService.getCurrentUser().subscribe(data => {
+        this.currUser = data.user
+      })
+    }
   }
 
   logoutClicked() {

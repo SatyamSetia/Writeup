@@ -10,7 +10,7 @@
         <span class="timestamp text-secondary">{{date}}</span>
       </div>
     </div>
-    <button class="favorite-btn rounded">
+    <button class="rounded" (click)="toggleFavorite()" [ngClass]="{'favorite-btn': !article.favorited, 'unfavorite-btn': article.favorited}">
       <i class="material-icons mr-1">
         favorite_border
       </i>
