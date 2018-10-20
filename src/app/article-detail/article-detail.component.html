@@ -1,5 +1,5 @@
 <div class="banner p-5">
-  <h1 class="text-light">{{article.title}}</h1>
+  <h1 class="text-light mb-4">{{article.title}}</h1>
   <div class="d-flex justify-content-between">
     <div class="d-flex">
       <a routerLink="/@{{article.author.username}}">
@@ -32,7 +32,7 @@
   </div>
 </div>
 <div class="container">
-  <h4 class="my-5 font-weight-normal">{{article.body}}</h4>
+  <h5 class="my-5 font-weight-normal text-justify">{{article.body}}</h5>
   <hr>
   <div class="d-flex justify-content-center">
     <div class="d-flex mr-4">
