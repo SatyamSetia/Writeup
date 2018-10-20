@@ -33,6 +33,20 @@ export class ArticlesService {
     return this.http.get(`${this.BASE_URL}/articles`,httpOptions)
   }
 
+  getFeedArticles() {
+    let headers;
+
+    headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Token '+ this.authTokenService.getToken();
+    });
+
+    let httpOptions = {
+      headers: headers
+    }
+    return this.http.get(`${this.BASE_URL}/articles/feed`,httpOptions)
+  }
+
   getAllUserArticles(username) {
     return this.http.get(`${this.BASE_URL}/articles?author=${username}`)
   }
