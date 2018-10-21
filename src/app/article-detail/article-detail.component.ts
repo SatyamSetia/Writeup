@@ -14,6 +14,8 @@ export class ArticleDetailComponent implements OnInit {
   article: any = {title:'',author:{image:''}};
   data:any = null;
   isLoggedIn: boolean;
+  isCurrUserArticle: boolean;
+  currUser: any;
 
   constructor(private active: ActivatedRoute, private articleService: ArticlesService, private userService: UsersService,private route: Router) {
     this.active.params.subscribe( params => {
@@ -22,16 +24,33 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fetchArticle()
+    this.userService.getCurrentUser().subscribe(data => {
+      this.currUser = data.user;
+    }, (err) => {
+      console.log(err)
+    }, () => {
+      this.fetchArticle()
+    })
+
     this.userService.isLoggedInObservable.subscribe(data => {
       this.isLoggedIn = data;
     })
+
+
   }
 
   fetchArticle() {
     this.articleService.getArticle(this.slug).subscribe(data => {
       this.article = data.article;
       this.date = new Date(this.article.updatedAt).toDateString();
+    }, (err) => {
+      console.log(err)
+    }, () => {
+      if(this.article.author.username === this.currUser.username) {
+        this.isCurrUserArticle = true;
+      } else {
+        this.isCurrUserArticle = false
+      }
     })
   }
 
@@ -66,6 +85,16 @@ export class ArticleDetailComponent implements OnInit {
     } else {
       this.route.navigate(['/login'])
     }
+  }
+
+  editArticle() {
+
+  }
+
+  deleteArticle() {
+    this.articleService.deleteArticle(this.article.slug).subscribe(() => {
+      this.route.navigate([''])
+    })
   }
 
 }

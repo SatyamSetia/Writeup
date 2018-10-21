@@ -14,21 +14,37 @@
         <span class="timestamp text-light">{{date}}</span>
       </div>
     </div>
-    <div>
-      <button class="rounded mr-2 py-1" (click)="toggleFollow()" [ngClass]="{'icon-btn-fav-light': !article.author.following, 'icon-btn-unfav-light': article.author.following}">
+    <div *ngIf="isCurrUserArticle; else notCurrUser">
+      <button class="rounded mr-2 py-1 icon-btn-fav-light" (click)="editArticle()">
         <i class="material-icons mr-1">
-          person_add
+          edit
         </i>
-        <span>{{article.author.following?'Unfollow':'Follow'}} </span>
-        <span>{{article.author.username}}</span>
+        <span>Edit Article</span>
       </button>
-      <button class="rounded py-1" (click)="toggleFavorite()" [ngClass]="{'icon-btn-fav-light': !article.favorited, 'icon-btn-unfav-light': article.favorited}">
+      <button class="rounded py-1 icon-btn-fav-light" (click)="deleteArticle()">
         <i class="material-icons mr-1">
-          favorite_border
+          delete
         </i>
-        <span class="count">({{article.favoritesCount}})</span>
+        <span class="count">Delete Article</span>
       </button>
     </div>
+    <ng-template #notCurrUser>
+      <div class="">
+        <button class="rounded mr-2 py-1" (click)="toggleFollow()" [ngClass]="{'icon-btn-fav-light': !article.author.following, 'icon-btn-unfav-light': article.author.following}">
+          <i class="material-icons mr-1">
+            person_add
+          </i>
+          <span>{{article.author.following?'Unfollow':'Follow'}} </span>
+          <span>{{article.author.username}}</span>
+        </button>
+        <button class="rounded py-1" (click)="toggleFavorite()" [ngClass]="{'icon-btn-fav-light': !article.favorited, 'icon-btn-unfav-light': article.favorited}">
+          <i class="material-icons mr-1">
+            favorite_border
+          </i>
+          <span class="count">({{article.favoritesCount}})</span>
+        </button>
+      </div>
+    </ng-template>
   </div>
 </div>
 <div class="container">
@@ -48,21 +64,37 @@
         <span class="timestamp text-secondary">{{date}}</span>
       </div>
     </div>
-    <div>
-      <button class="rounded mr-2 py-1" (click)="toggleFollow()" [ngClass]="{'icon-btn-fav-dark': !article.author.following, 'icon-btn-unfav-dark': article.author.following}">
+    <div *ngIf="isCurrUserArticle; else notCurrUser">
+      <button class="rounded mr-2 py-1 icon-btn-fav-dark" (click)="editArticle()">
         <i class="material-icons mr-1">
-          person_add
+          edit
         </i>
-        <span>{{article.author.following?'Unfollow':'Follow'}} </span>
-        <span>{{article.author.username}}</span>
+        <span>Edit Article</span>
       </button>
-      <button class="rounded py-1" (click)="toggleFavorite()" [ngClass]="{'icon-btn-fav-dark': !article.favorited, 'icon-btn-unfav-dark': article.favorited}">
+      <button class="rounded py-1 icon-btn-fav-dark" (click)="deleteArticle()">
         <i class="material-icons mr-1">
-          favorite_border
+          delete
         </i>
-        <span class="count">({{article.favoritesCount}})</span>
+        <span class="count">Delete Article</span>
       </button>
     </div>
+    <ng-template #notCurrUser>
+      <div class="">
+        <button class="rounded mr-2 py-1" (click)="toggleFollow()" [ngClass]="{'icon-btn-fav-light': !article.author.following, 'icon-btn-unfav-light': article.author.following}">
+          <i class="material-icons mr-1">
+            person_add
+          </i>
+          <span>{{article.author.following?'Unfollow':'Follow'}} </span>
+          <span>{{article.author.username}}</span>
+        </button>
+        <button class="rounded py-1" (click)="toggleFavorite()" [ngClass]="{'icon-btn-fav-light': !article.favorited, 'icon-btn-unfav-light': article.favorited}">
+          <i class="material-icons mr-1">
+            favorite_border
+          </i>
+          <span class="count">({{article.favoritesCount}})</span>
+        </button>
+      </div>
+    </ng-template>
   </div>
   <div class="d-flex justify-content-center my-5">
     <div class="" *ngIf="isLoggedIn; else notLogged">

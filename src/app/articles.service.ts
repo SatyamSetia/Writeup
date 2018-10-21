@@ -111,4 +111,19 @@ export class ArticlesService {
     }
     return this.http.delete(`${this.BASE_URL}/articles/${slug}/favorite`,httpOptions)
   }
+
+  deleteArticle(slug) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+ this.authTokenService.getToken();
+    });
+    let httpOptions = {
+      headers: headers
+    }
+    return this.http.delete(`${this.BASE_URL}/articles/${slug}`,httpOptions)
+  }
+
+  editArticle() {
+    
+  }
 }
