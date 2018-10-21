@@ -46,8 +46,10 @@ export class ContentComponent implements OnInit {
   }
 
   onScroll() {
-    this.offset+=20;
-    this.fetchGlobalFeed(this.offset);
+    if(this.offset<480) {
+        this.offset+=20;
+        this.fetchGlobalFeed(this.offset);
+    }
   }
 
 }
