@@ -3,8 +3,8 @@
 </div>
 <div class="row mx-5 my-3">
   <div class="col-sm-8">
-    <app-tab-button label="Your Feed" (tabClicked)="handleTab($event)" *ngIf="isLoggedIn"></app-tab-button>
-    <app-tab-button label="Global Feed" (tabClicked)='handleTab($event)'></app-tab-button>
+    <app-tab-button [tabStyleActive]=!isGlobalFeed label="Your Feed" (tabClicked)="handleTab($event)" *ngIf="isLoggedIn"></app-tab-button>
+    <app-tab-button [tabStyleActive]=isGlobalFeed label="Global Feed" (tabClicked)='handleTab($event)'></app-tab-button>
     <div class="" infiniteScroll (scrolled)="onScroll()">
       <app-article-list [articles]="articles"></app-article-list>
     </div>

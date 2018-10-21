@@ -17,8 +17,8 @@
 </div>
 <div class="container">
   <div class="mx-5 mt-2">
-    <app-tab-button label="My Articles" (tabClicked)='handleTab($event)'></app-tab-button>
-    <app-tab-button label="Favorited Articles" (tabClicked)='handleTab($event)'></app-tab-button>
+    <app-tab-button [tabStyleActive]=!isFavArticleActive label="My Articles" (tabClicked)='handleTab($event)'></app-tab-button>
+    <app-tab-button [tabStyleActive]=isFavArticleActive label="Favorited Articles" (tabClicked)='handleTab($event)'></app-tab-button>
     <app-article-list [articles]="articles"></app-article-list>
   </div>
 </div>

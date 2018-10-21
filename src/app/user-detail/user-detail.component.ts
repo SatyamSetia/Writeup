@@ -13,6 +13,7 @@ export class UserDetailComponent implements OnInit {
   user: any = {bio:'', following:'',image:'',username:''};
   username: string;
   articles = [];
+  isFavArticleActive = false;
 
   constructor(private userService: UsersService, private articlesService: ArticlesService, private active: ActivatedRoute, private route: Router) {
     this.active.params.subscribe( params => {
@@ -58,8 +59,10 @@ export class UserDetailComponent implements OnInit {
 
   handleTab(e) {
     if(e === 'MyArticlesClicked') {
+      this.isFavArticleActive = false;
       this.fetchAllUserArticles()
     } else if(e === 'FavoritedArticlesClicked') {
+      this.isFavArticleActive = true;
       this.fetchAllFavoritedArticles()
     }
   }

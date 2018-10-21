@@ -12,6 +12,7 @@ export class ContentComponent implements OnInit {
   articles = [];
   isLoggedIn: boolean;
   offset = 0;
+  isGlobalFeed = true;
 
   constructor(private articlesService: ArticlesService, private usersService: UsersService) {
     this.usersService.isLoggedInObservable.subscribe(data => {
@@ -39,14 +40,16 @@ export class ContentComponent implements OnInit {
 
   handleTab(e) {
     if(e == 'GlobalFeedClicked') {
+      this.isGlobalFeed = true;
       this.fetchGlobalFeed();
     } else if(e == 'YourFeedClicked') {
+      this.isGlobalFeed = false;
       this.fetchYourFeed();
     }
   }
 
   onScroll() {
-    if(this.offset<480) {
+    if(this.isGlobalFeed && this.offset<480) {
         this.offset+=20;
         this.fetchGlobalFeed(this.offset);
     }

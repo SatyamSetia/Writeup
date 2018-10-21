@@ -8,3 +8,8 @@
 .tab:hover {
   color: #000;
 }
+
+.tab.active {
+  color: #C84E90;
+  border-bottom: 1px solid #C84E90;
+}

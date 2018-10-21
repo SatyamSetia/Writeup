@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TabButtonComponent implements OnInit {
 
   @Input() label: string;
+  @Input() tabStyleActive: boolean;
   @Output() tabClicked = new EventEmitter();
 
   constructor() { }
