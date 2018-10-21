@@ -13,7 +13,7 @@ export class ArticlesService {
   constructor(private http: HttpClient, private authTokenService: AuthTokenService, private userService: UsersService) {
   }
 
-  getAllArticles() {
+  getAllArticles(offset) {
     let headers;
 
     if(this.userService.ensureLoggedIn()){
@@ -30,7 +30,7 @@ export class ArticlesService {
     let httpOptions = {
       headers: headers
     }
-    return this.http.get(`${this.BASE_URL}/articles`,httpOptions)
+    return this.http.get(`${this.BASE_URL}/articles?offset=${offset}`,httpOptions)
   }
 
   getFeedArticles() {
@@ -124,6 +124,6 @@ export class ArticlesService {
   }
 
   editArticle() {
-    
+
   }
 }

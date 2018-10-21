@@ -3,6 +3,7 @@ import { ReactiveFormsModule }   from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -49,7 +50,13 @@ const appRoutes: Routes = [
   {
     path: 'editor',
     canActivate: [AuthGuard],
-    component: NewArticleComponent
+    component: NewArticleComponent,
+    children: [
+      {
+        path: ':slug',
+        component: NewArticleComponent
+      }
+    ]
   },
   {
     path: ':username',
@@ -82,7 +89,8 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

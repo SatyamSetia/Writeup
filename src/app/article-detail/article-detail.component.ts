@@ -88,7 +88,7 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   editArticle() {
-
+    this.route.navigate([`/editor/${this.article.slug}`])
   }
 
   deleteArticle() {

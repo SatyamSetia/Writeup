@@ -11,6 +11,7 @@ export class ContentComponent implements OnInit {
 
   articles = [];
   isLoggedIn: boolean;
+  offset = 0;
 
   constructor(private articlesService: ArticlesService, private usersService: UsersService) {
     this.usersService.isLoggedInObservable.subscribe(data => {
@@ -19,13 +20,13 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fetchGlobalFeed()
+    this.fetchGlobalFeed(this.offset)
   }
 
-  fetchGlobalFeed() {
-    this.articlesService.getAllArticles()
+  fetchGlobalFeed(skip) {
+    this.articlesService.getAllArticles(skip)
       .subscribe(data => {
-        this.articles = data.articles
+        this.articles = [...this.articles, ...data.articles]
       })
   }
 
@@ -42,6 +43,11 @@ export class ContentComponent implements OnInit {
     } else if(e == 'YourFeedClicked') {
       this.fetchYourFeed();
     }
+  }
+
+  onScroll() {
+    this.offset+=20;
+    this.fetchGlobalFeed(this.offset);
   }
 
 }
