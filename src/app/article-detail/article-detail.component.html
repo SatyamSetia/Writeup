@@ -18,7 +18,7 @@
           <span class="timestamp text-light">{{date}}</span>
         </div>
       </div>
-      <div *ngIf="isCurrUserArticle; else notCurrUser">
+      <div *ngIf="isCurrUserArticle; else notCurrUserBanner">
         <button class="rounded mr-2 py-1 icon-btn-fav-light" (click)="editArticle()">
           <i class="material-icons mr-1">
             edit
@@ -32,7 +32,7 @@
           <span class="count">Delete Article</span>
         </button>
       </div>
-      <ng-template #notCurrUser>
+      <ng-template #notCurrUserBanner>
         <div class="">
           <button class="rounded mr-2 py-1" (click)="toggleFollow()" [ngClass]="{'icon-btn-fav-light': !article.author.following, 'icon-btn-unfav-light': article.author.following}">
             <i class="material-icons mr-1">
@@ -84,14 +84,14 @@
       </div>
       <ng-template #notCurrUser>
         <div class="">
-          <button class="rounded mr-2 py-1" (click)="toggleFollow()" [ngClass]="{'icon-btn-fav-light': !article.author.following, 'icon-btn-unfav-light': article.author.following}">
+          <button class="rounded mr-2 py-1" (click)="toggleFollow()" [ngClass]="{'icon-btn-fav-dark': !article.author.following, 'icon-btn-unfav-dark': article.author.following}">
             <i class="material-icons mr-1">
               person_add
             </i>
             <span>{{article.author.following?'Unfollow':'Follow'}} </span>
             <span>{{article.author.username}}</span>
           </button>
-          <button class="rounded py-1" (click)="toggleFavorite()" [ngClass]="{'icon-btn-fav-light': !article.favorited, 'icon-btn-unfav-light': article.favorited}">
+          <button class="rounded py-1" (click)="toggleFavorite()" [ngClass]="{'icon-btn-fav-dark': !article.favorited, 'icon-btn-unfav-dark': article.favorited}">
             <i class="material-icons mr-1">
               favorite_border
             </i>

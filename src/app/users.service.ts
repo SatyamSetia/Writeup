@@ -27,14 +27,44 @@ export class UsersService {
   }
 
   authenticate(user) {
-    return this.http.post(`${this.BASE_URL}/users/login`, user, this.httpOptions).pipe(map(data => {
+    let headers;
+
+    if(this.ensureLoggedIn()){
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Token '+ this.authTokenService.getToken()
+      });
+    } else {
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json'
+      });
+    }
+    let httpOptions = {
+      headers: headers
+    }
+    return this.http.post(`${this.BASE_URL}/users/login`, user, httpOptions).pipe(map(data => {
       this.isLoggedIn.next(true);
       return data;
     }))
   }
 
   register(user) {
-    return this.http.post(`${this.BASE_URL}/users`, user, this.httpOptions)
+    let headers;
+
+    if(this.ensureLoggedIn()){
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Token '+ this.authTokenService.getToken()
+      });
+    } else {
+      headers = new HttpHeaders({
+        'Content-Type': 'application/json'
+      });
+    }
+    let httpOptions = {
+      headers: headers
+    }
+    return this.http.post(`${this.BASE_URL}/users`, user, httpOptions)
   }
 
   logout() {
@@ -54,7 +84,7 @@ export class UsersService {
   updateUser(user) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization':'Token '+ this.authTokenService.getToken();
+      'Authorization':'Token '+ this.authTokenService.getToken()
     });
     let httpOptions = {
       headers: headers
@@ -68,7 +98,7 @@ export class UsersService {
     if(this.ensureLoggedIn()){
       headers = new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Token '+ this.authTokenService.getToken();
+        'Authorization': 'Token '+ this.authTokenService.getToken()
       });
     } else {
       headers = new HttpHeaders({
@@ -87,7 +117,7 @@ export class UsersService {
     if(this.ensureLoggedIn()){
       headers = new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Token '+ this.authTokenService.getToken();
+        'Authorization': 'Token '+ this.authTokenService.getToken()
       });
     } else {
       headers = new HttpHeaders({
@@ -107,7 +137,7 @@ export class UsersService {
     if(this.ensureLoggedIn()){
       headers = new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Token '+ this.authTokenService.getToken();
+        'Authorization': 'Token '+ this.authTokenService.getToken()
       });
     } else {
       headers = new HttpHeaders({

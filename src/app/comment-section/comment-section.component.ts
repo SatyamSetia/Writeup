@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UsersService } from '../users.service';
 import { CommentService } from '../comment.service';
+import { User } from '../models/user';
+import { UserResponse } from '../models/user.response'
 
 @Component({
   selector: 'app-comment-section',
@@ -12,8 +14,7 @@ export class CommentSectionComponent implements OnInit {
 
   @Input() slug:any;
 
-  currUser: any = {
-    username: '',
+  currUser: User = {
     image: ''
   };
 
@@ -24,7 +25,7 @@ export class CommentSectionComponent implements OnInit {
   constructor(private userService: UsersService, private commentService: CommentService) { }
 
   ngOnInit() {
-    this.userService.getCurrentUser().subscribe(data => {
+    this.userService.getCurrentUser().subscribe((data: UserResponse) => {
       this.currUser = data.user
     })
   }

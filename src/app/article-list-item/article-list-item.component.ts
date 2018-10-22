@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ArticlesService } from '../articles.service';
 import { UsersService } from '../users.service';
 import { Router } from '@angular/router';
+import { Article } from '../models/article';
+import { ArticleResponse } from '../models/article.response';
 
 @Component({
   selector: 'app-article-list-item',
@@ -9,7 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./article-list-item.component.css']
 })
 export class ArticleListItemComponent implements OnInit {
-  @Input() article:any;
+
+  @Input() article: Article;
 
   date: any;
   constructor(private articleService: ArticlesService, private userService: UsersService, private route: Router) { }
@@ -21,11 +24,11 @@ export class ArticleListItemComponent implements OnInit {
   toggleFavorite() {
     if(this.userService.ensureLoggedIn()) {
       if(this.article.favorited) {
-        this.articleService.unfavoriteArticle(this.article.slug).subscribe(data => {
+        this.articleService.unfavoriteArticle(this.article.slug).subscribe((data: ArticleResponse) => {
           this.article = data.article
         })
       } else {
-        this.articleService.favoriteArticle(this.article.slug).subscribe(data => {
+        this.articleService.favoriteArticle(this.article.slug).subscribe((data: ArticleResponse) => {
           this.article = data.article
         })
       }

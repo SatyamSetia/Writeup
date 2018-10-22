@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { ArticlesService } from "../articles.service";
 import { UsersService } from '../users.service';
+import { User } from '../models/user';
+import { Article } from '../models/article';
+import { UserResponse } from '../models/user.response';
+import { ArticleResponse } from '../models/article.response';
 
 @Component({
   selector: 'app-article-detail',
@@ -11,12 +15,12 @@ import { UsersService } from '../users.service';
 export class ArticleDetailComponent implements OnInit {
 
   slug: string = null;
-  article: any = {title:'',author:{image:''}};
-  data:any = null;
+  article: Article;
+  date:string;
   isLoggedIn: boolean;
   isCurrUserArticle: boolean;
-  currUser: any;
-  isLoading: bollean = true;
+  currUser: User;
+  isLoading: boolean = true;
 
   constructor(private active: ActivatedRoute, private articleService: ArticlesService, private userService: UsersService,private route: Router) {
     this.active.params.subscribe( params => {
@@ -25,7 +29,7 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getCurrentUser().subscribe(data => {
+    this.userService.getCurrentUser().subscribe((data: UserResponse) => {
       this.currUser = data.user;
     }, (err) => {
       console.log(err)
@@ -36,12 +40,10 @@ export class ArticleDetailComponent implements OnInit {
     this.userService.isLoggedInObservable.subscribe(data => {
       this.isLoggedIn = data;
     })
-
-
   }
 
   fetchArticle() {
-    this.articleService.getArticle(this.slug).subscribe(data => {
+    this.articleService.getArticle(this.slug).subscribe((data: ArticleResponse) => {
       this.article = data.article;
       this.date = new Date(this.article.updatedAt).toDateString();
     }, (err) => {
@@ -76,11 +78,11 @@ export class ArticleDetailComponent implements OnInit {
   toggleFavorite() {
     if(this.userService.ensureLoggedIn()) {
       if(this.article.favorited) {
-        this.articleService.unfavoriteArticle(this.article.slug).subscribe(data => {
+        this.articleService.unfavoriteArticle(this.article.slug).subscribe((data: ArticleResponse) => {
           this.article = data.article
         })
       } else {
-        this.articleService.favoriteArticle(this.article.slug).subscribe(data => {
+        this.articleService.favoriteArticle(this.article.slug).subscribe((data: ArticleResponse) => {
           this.article = data.article
         })
       }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from '../articles.service';
+import { TagResponse } from '../models/tag.response';
 
 @Component({
   selector: 'app-tag-list',
@@ -13,7 +14,7 @@ export class TagListComponent implements OnInit {
   constructor(private articlesService: ArticlesService) { }
 
   ngOnInit() {
-    this.articlesService.getAllTags().subscribe(data => {
+    this.articlesService.getAllTags().subscribe((data: TagResponse) => {
       this.tags = data.tags
     })
   }

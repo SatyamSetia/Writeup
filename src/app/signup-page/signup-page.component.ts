@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import { UsersService } from '../users.service';
 import { AuthTokenService } from '../auth-token.service';
+import { UserResponse } from '../models/user.response';
 
 @Component({
   selector: 'app-signup-page',
@@ -24,7 +25,7 @@ export class SignupPageComponent implements OnInit {
         email:inputs.email,
         password:inputs.password
       }
-    }).subscribe(data => {
+    }).subscribe((data: UserResponse) => {
         this.authTokenService.saveToken(data.user.token)
       },
       err => {

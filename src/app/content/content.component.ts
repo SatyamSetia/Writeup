@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from '../articles.service';
 import { UsersService } from '../users.service';
+import { Article } from '../models/article';
+import { ArticleResponse } from '../models/article.response';
+import { ArticleList } from '../models/articleList';
 
 @Component({
   selector: 'app-content',
@@ -9,7 +12,7 @@ import { UsersService } from '../users.service';
 })
 export class ContentComponent implements OnInit {
 
-  articles = [];
+  articles: Array<Article> = [];
   isLoggedIn: boolean;
   offset = 0;
   isGlobalFeed = true;
@@ -26,14 +29,14 @@ export class ContentComponent implements OnInit {
 
   fetchGlobalFeed(skip) {
     this.articlesService.getAllArticles(skip)
-      .subscribe(data => {
+      .subscribe((data: ArticleList) => {
         this.articles = [...this.articles, ...data.articles]
       })
   }
 
   fetchYourFeed() {
     this.articlesService.getFeedArticles()
-      .subscribe(data => {
+      .subscribe((data: ArticleList) => {
         this.articles = data.articles
       })
   }
@@ -41,7 +44,7 @@ export class ContentComponent implements OnInit {
   handleTab(e) {
     if(e == 'GlobalFeedClicked') {
       this.isGlobalFeed = true;
-      this.fetchGlobalFeed();
+      this.fetchGlobalFeed(0);
     } else if(e == 'YourFeedClicked') {
       this.isGlobalFeed = false;
       this.fetchYourFeed();

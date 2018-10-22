@@ -19,7 +19,7 @@ export class ArticlesService {
     if(this.userService.ensureLoggedIn()){
       headers = new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Token '+ this.authTokenService.getToken();
+        'Authorization': 'Token '+ this.authTokenService.getToken()
       });
     } else {
       headers = new HttpHeaders({
@@ -38,7 +38,7 @@ export class ArticlesService {
 
     headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Token '+ this.authTokenService.getToken();
+      'Authorization': 'Token '+ this.authTokenService.getToken()
     });
 
     let httpOptions = {
@@ -61,7 +61,7 @@ export class ArticlesService {
     if(this.userService.ensureLoggedIn()){
       headers = new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Token '+ this.authTokenService.getToken();
+        'Authorization': 'Token '+ this.authTokenService.getToken()
       });
     } else {
       headers = new HttpHeaders({
@@ -82,7 +82,7 @@ export class ArticlesService {
   createArticle(article) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization':'Token '+ this.authTokenService.getToken();
+      'Authorization':'Token '+ this.authTokenService.getToken()
     });
     let httpOptions = {
       headers: headers
@@ -93,7 +93,7 @@ export class ArticlesService {
   favoriteArticle(slug) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization':'Token '+ this.authTokenService.getToken();
+      'Authorization':'Token '+ this.authTokenService.getToken()
     });
     let httpOptions = {
       headers: headers
@@ -104,7 +104,7 @@ export class ArticlesService {
   unfavoriteArticle(slug) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization':'Token '+ this.authTokenService.getToken();
+      'Authorization':'Token '+ this.authTokenService.getToken()
     });
     let httpOptions = {
       headers: headers
@@ -115,7 +115,7 @@ export class ArticlesService {
   deleteArticle(slug) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization':'Token '+ this.authTokenService.getToken();
+      'Authorization':'Token '+ this.authTokenService.getToken()
     });
     let httpOptions = {
       headers: headers

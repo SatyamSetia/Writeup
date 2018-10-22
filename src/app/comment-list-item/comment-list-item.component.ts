@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Comment } from '../models/comment';
 
 @Component({
   selector: 'app-comment-list-item',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CommentListItemComponent implements OnInit {
 
-  @Input() comment: any;
+  @Input() comment: Comment;
 
   date: any
 

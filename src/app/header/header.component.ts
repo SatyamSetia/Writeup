@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
+import { User } from '../models/user';
+import { UserResponse } from '../models/user.response';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +11,11 @@ import { UsersService } from '../users.service';
 export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean = false;
-  currUser: any = {
-    username: '',
+  currUser: User = {
+    email: '',
+    token: '',
+    username:'',
+    bio: '',
     image: ''
   };
 
@@ -19,11 +24,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.userService.isLoggedInObservable.subscribe(data => {
       this.isLoggedIn = data;
-      console.log(this.isLoggedIn)
     })
 
     if(this.userService.ensureLoggedIn()) {
-      this.userService.getCurrentUser().subscribe(data => {
+      this.userService.getCurrentUser().subscribe((data: UserResponse) => {
         this.currUser = data.user
       })
     }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from '../comment.service';
+import { CommentResponse } from '../models/comment.response';
 
 @Component({
   selector: 'app-comment-list',
@@ -15,7 +16,7 @@ export class CommentListComponent implements OnInit {
   constructor(private commentService: CommentService) { }
 
   ngOnInit() {
-    this.commentService.getAllComments(this.slug).subscribe(data => {
+    this.commentService.getAllComments(this.slug).subscribe((data: CommentResponse) => {
       this.comments = data.comments
     })
   }

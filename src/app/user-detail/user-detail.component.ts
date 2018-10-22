@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { UsersService } from '../users.service';
 import { ArticlesService } from '../articles.service';
+import { User } from '../models/user';
+import { Article } from '../models/article';
+import { UserProfile } from '../models/user.profile';
+import { UserProfileResponse } from '../models/userProfile.response';
+import { ArticleList } from '../models/articleList';
 
 @Component({
   selector: 'app-user-detail',
@@ -10,9 +15,9 @@ import { ArticlesService } from '../articles.service';
 })
 export class UserDetailComponent implements OnInit {
 
-  user: any = {bio:'', following:'',image:'',username:''};
+  user: UserProfile;
   username: string;
-  articles = [];
+  articles: Array<Article> = [];
   isFavArticleActive = false;
   isLoading: boolean = true;
 
@@ -23,7 +28,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUser(this.username.substring(1)).subscribe(data => {
+    this.userService.getUser(this.username.substring(1)).subscribe((data: UserProfileResponse) => {
       this.user = data.profile;
       this.isLoading = false;
     });
@@ -31,13 +36,13 @@ export class UserDetailComponent implements OnInit {
   }
 
   fetchAllUserArticles() {
-    this.articlesService.getAllUserArticles(this.username.substring(1)).subscribe(data => {
+    this.articlesService.getAllUserArticles(this.username.substring(1)).subscribe((data: ArticleList) => {
       this.articles = data.articles;
     })
   }
 
   fetchAllFavoritedArticles() {
-    this.articlesService.getAllFavoritedArticles(this.username.substring(1)).subscribe(data => {
+    this.articlesService.getAllFavoritedArticles(this.username.substring(1)).subscribe((data: ArticleList) => {
       this.articles = data.articles;
     })
   }
@@ -45,11 +50,11 @@ export class UserDetailComponent implements OnInit {
   toggleFollow() {
     if(this.userService.ensureLoggedIn()) {
       if(this.user.following) {
-        this.userService.unfollowUser(this.user.username).subscribe(data => {
+        this.userService.unfollowUser(this.user.username).subscribe((data: UserProfileResponse) => {
           this.user = data.profile
         })
       } else {
-        this.userService.followUser(this.user.username).subscribe(data => {
+        this.userService.followUser(this.user.username).subscribe((data: UserProfileResponse) => {
           this.user = data.profile
         })
       }
