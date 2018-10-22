@@ -6,8 +6,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./article-list.component.css']
 })
 export class ArticleListComponent implements OnInit {
+
   @Input() articles:any;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

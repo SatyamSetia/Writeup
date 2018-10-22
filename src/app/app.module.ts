@@ -24,6 +24,7 @@ import { NewArticleComponent } from './new-article/new-article.component';
 import { CommentSectionComponent } from './comment-section/comment-section.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentListItemComponent } from './comment-list-item/comment-list-item.component';
+import { LoaderComponent } from './loader/loader.component';
 
 const appRoutes: Routes = [
   {
@@ -83,7 +84,8 @@ const appRoutes: Routes = [
     NewArticleComponent,
     CommentSectionComponent,
     CommentListComponent,
-    CommentListItemComponent
+    CommentListItemComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

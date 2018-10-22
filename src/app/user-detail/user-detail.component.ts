@@ -14,6 +14,7 @@ export class UserDetailComponent implements OnInit {
   username: string;
   articles = [];
   isFavArticleActive = false;
+  isLoading: boolean = true;
 
   constructor(private userService: UsersService, private articlesService: ArticlesService, private active: ActivatedRoute, private route: Router) {
     this.active.params.subscribe( params => {
@@ -24,6 +25,7 @@ export class UserDetailComponent implements OnInit {
   ngOnInit() {
     this.userService.getUser(this.username.substring(1)).subscribe(data => {
       this.user = data.profile;
+      this.isLoading = false;
     });
     this.fetchAllUserArticles()
   }

@@ -16,6 +16,7 @@ export class ArticleDetailComponent implements OnInit {
   isLoggedIn: boolean;
   isCurrUserArticle: boolean;
   currUser: any;
+  isLoading: bollean = true;
 
   constructor(private active: ActivatedRoute, private articleService: ArticlesService, private userService: UsersService,private route: Router) {
     this.active.params.subscribe( params => {
@@ -51,6 +52,7 @@ export class ArticleDetailComponent implements OnInit {
       } else {
         this.isCurrUserArticle = false
       }
+      this.isLoading = false;
     })
   }
 
