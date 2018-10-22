@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from '../comment.service';
-import { CommentResponse } from '../models/comment.response';
+import { Comment } from '../models/comment';
 
 @Component({
   selector: 'app-comment-list',
@@ -10,15 +10,12 @@ import { CommentResponse } from '../models/comment.response';
 export class CommentListComponent implements OnInit {
 
   @Input() slug: any;
+  @Input() comments: Array<Comment>;
 
-  comments: any;
-
-  constructor(private commentService: CommentService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.commentService.getAllComments(this.slug).subscribe((data: CommentResponse) => {
-      this.comments = data.comments
-    })
+
   }
 
 }

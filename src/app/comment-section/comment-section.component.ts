@@ -3,7 +3,10 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { UsersService } from '../users.service';
 import { CommentService } from '../comment.service';
 import { User } from '../models/user';
-import { UserResponse } from '../models/user.response'
+import { UserResponse } from '../models/user.response';
+import { CommentResponse } from '../models/comment.response';
+import { Comment } from '../models/comment';
+import { CommentList } from '../models/commentList.response';
 
 @Component({
   selector: 'app-comment-section',
@@ -14,30 +17,41 @@ export class CommentSectionComponent implements OnInit {
 
   @Input() slug:any;
 
-  currUser: User = {
-    image: ''
-  };
+  currUser: User;
+
+  comments: Array<Comment>;
 
   userInputs = new FormGroup({
     comment: new FormControl('')
   })
 
-  constructor(private userService: UsersService, private commentService: CommentService) { }
+  constructor(private userService: UsersService, private commentService: CommentService) {
+    this.currUser = {
+      image: '',
+      email: '',
+      token: '',
+      username: '',
+      bio: ''
+    };
+  }
 
   ngOnInit() {
     this.userService.getCurrentUser().subscribe((data: UserResponse) => {
       this.currUser = data.user
     })
+
+    this.commentService.getAllComments(this.slug).subscribe((data: CommentList) => {
+      this.comments = data.comments
+    })
   }
 
   onSubmit() {
-    console.log(this.slug)
     this.commentService.addNewComment(this.slug,{
       comment: {
         body: this.userInputs.value.comment
       }
-    }).subscribe(data => {
-      console.log(data)
+    }).subscribe((data: CommentResponse) => {
+      this.comments = [data.comment, ...this.comments]
     })
   }
 
