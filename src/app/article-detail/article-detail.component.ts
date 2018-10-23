@@ -19,7 +19,13 @@ export class ArticleDetailComponent implements OnInit {
   date:string;
   isLoggedIn: boolean;
   isCurrUserArticle: boolean;
-  currUser: User;
+  currUser: User = {
+    username: '',
+    email: '',
+    token: '',
+    bio: '',
+    image: ''
+  };
   isLoading: boolean = true;
 
   constructor(private active: ActivatedRoute, private articleService: ArticlesService, private userService: UsersService,private route: Router) {
@@ -29,16 +35,19 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getCurrentUser().subscribe((data: UserResponse) => {
-      this.currUser = data.user;
-    }, (err) => {
-      console.log(err)
-    }, () => {
-      this.fetchArticle()
-    })
-
     this.userService.isLoggedInObservable.subscribe(data => {
       this.isLoggedIn = data;
+      if(this.isLoggedIn) {
+        this.userService.getCurrentUser().subscribe((data: UserResponse) => {
+          this.currUser = data.user;
+        }, (err) => {
+          console.log(err)
+        }, () => {
+          this.fetchArticle()
+        })
+      } else {
+        this.fetchArticle()
+      }
     })
   }
 
