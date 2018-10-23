@@ -123,7 +123,14 @@ export class ArticlesService {
     return this.http.delete(`${this.BASE_URL}/articles/${slug}`,httpOptions)
   }
 
-  editArticle() {
-
+  editArticle(slug, article) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization':'Token '+ this.authTokenService.getToken()
+    });
+    let httpOptions = {
+      headers: headers
+    }
+    return this.http.put(`${this.BASE_URL}/articles/${slug}`,article, httpOptions)
   }
 }

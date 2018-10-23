@@ -51,8 +51,11 @@ const appRoutes: Routes = [
   {
     path: 'editor',
     canActivate: [AuthGuard],
-    component: NewArticleComponent,
     children: [
+      {
+        path: '',
+        component: NewArticleComponent
+      },
       {
         path: ':slug',
         component: NewArticleComponent
