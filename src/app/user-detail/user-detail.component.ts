@@ -8,6 +8,7 @@ import { UserProfile } from '../models/user.profile';
 import { UserProfileResponse } from '../models/userProfile.response';
 import { UserResponse } from '../models/user.response';
 import { ArticleList } from '../models/articleList';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-detail',
@@ -22,20 +23,22 @@ export class UserDetailComponent implements OnInit {
   isFavArticleActive = false;
   isLoading: boolean = true;
   currUser: User;
-  userIsCurrUser: boolean = false;;
+  userIsCurrUser: boolean = false;
+  usernameSubject = Subscription.EMPTY;
 
   constructor(private userService: UsersService, private articlesService: ArticlesService, private active: ActivatedRoute, private route: Router) {
-    this.active.params.subscribe( params => {
-        this.username = params.username
-    });
   }
 
   ngOnInit() {
-    this.userService.getUser(this.username.substring(1)).subscribe((data: UserProfileResponse) => {
-      this.user = data.profile;
-      this.isLoading = false;
+    this.usernameSubject = this.active.params.subscribe( params => {
+
+      this.username = params.username
+
+      this.fetchUser(this.username.substring(1));
+
+      this.fetchAllUserArticles();
     });
-    this.fetchAllUserArticles();
+
     if(this.userService.ensureLoggedIn()) {
       this.userService.getCurrentUser().subscribe((data: UserResponse) => {
         this.currUser = data.user
@@ -44,6 +47,17 @@ export class UserDetailComponent implements OnInit {
         }
       })
     }
+  }
+
+  ngOnDestroy() {
+     this.usernameSubject.unsubscribe();
+   }
+
+  fetchUser(name) {
+    this.userService.getUser(name).subscribe((data: UserProfileResponse) => {
+      this.user = data.profile;
+      this.isLoading = false;
+    });
   }
 
   fetchAllUserArticles() {

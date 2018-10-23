@@ -31,7 +31,9 @@ export class SettingsComponent implements OnInit {
         username: this.userInputs.value.username,
         password: this.userInputs.value.password
       }
-    }).subscribe(data => console.log(data))
+    }).subscribe(data => {
+      console.log(data)
+    })
   }
 
   logoutClicked() {
