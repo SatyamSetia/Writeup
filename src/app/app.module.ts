@@ -65,6 +65,10 @@ const appRoutes: Routes = [
   {
     path: ':username',
     component: UserDetailComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ]
 
