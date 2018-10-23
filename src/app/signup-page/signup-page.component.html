@@ -6,6 +6,9 @@
 
     </div>
     <div class="col-sm-6">
+      <div class="error" *ngFor="let error of errorMessage">
+        {{error}}
+      </div>
       <app-form (formInputs)='registerUser($event)' [label]="formLabel">
       </app-form>
     </div>

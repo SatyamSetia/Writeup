@@ -12,6 +12,7 @@ import { UserResponse } from '../models/user.response';
 export class SignupPageComponent implements OnInit {
 
   formLabel: string = "Sign up";
+  errorMessage: Array<String> = [];
 
   constructor(private userService: UsersService, private authTokenService: AuthTokenService, private route: Router, private active: ActivatedRoute) { }
 
@@ -19,6 +20,7 @@ export class SignupPageComponent implements OnInit {
   }
 
   registerUser(inputs) {
+    this.errorMessage = [];
     this.userService.register({
       user : {
         username: inputs.username,
@@ -29,7 +31,15 @@ export class SignupPageComponent implements OnInit {
         this.authTokenService.saveToken(data.user.token)
       },
       err => {
-        console.log(err)
+        let errors = err.error.errors;
+        for(var key in errors){
+          let msgs = errors[key];
+          if(errors.hasOwnProperty(key)){
+            for(let i=0;i<msgs.length;i++){
+              this.errorMessage.push(`${key}  ${msgs[i]}`);
+            }
+          }
+        }
       },
       () => {
         console.log('signed up')
