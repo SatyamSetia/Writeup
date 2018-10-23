@@ -44,6 +44,7 @@ export class ContentComponent implements OnInit {
   handleTab(e) {
     if(e == 'GlobalFeedClicked') {
       this.isGlobalFeed = true;
+      this.articles = [];
       this.fetchGlobalFeed(0);
     } else if(e == 'YourFeedClicked') {
       this.isGlobalFeed = false;
