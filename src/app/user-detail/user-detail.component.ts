@@ -6,6 +6,7 @@ import { User } from '../models/user';
 import { Article } from '../models/article';
 import { UserProfile } from '../models/user.profile';
 import { UserProfileResponse } from '../models/userProfile.response';
+import { UserResponse } from '../models/user.response';
 import { ArticleList } from '../models/articleList';
 
 @Component({
@@ -20,6 +21,8 @@ export class UserDetailComponent implements OnInit {
   articles: Array<Article> = [];
   isFavArticleActive = false;
   isLoading: boolean = true;
+  currUser: User;
+  userIsCurrUser: boolean = false;;
 
   constructor(private userService: UsersService, private articlesService: ArticlesService, private active: ActivatedRoute, private route: Router) {
     this.active.params.subscribe( params => {
@@ -32,7 +35,15 @@ export class UserDetailComponent implements OnInit {
       this.user = data.profile;
       this.isLoading = false;
     });
-    this.fetchAllUserArticles()
+    this.fetchAllUserArticles();
+    if(this.userService.ensureLoggedIn()) {
+      this.userService.getCurrentUser().subscribe((data: UserResponse) => {
+        this.currUser = data.user
+        if(this.currUser.username === this.user.username) {
+          this.userIsCurrUser = true;
+        }
+      })
+    }
   }
 
   fetchAllUserArticles() {

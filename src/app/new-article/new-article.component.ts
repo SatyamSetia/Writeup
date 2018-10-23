@@ -65,7 +65,9 @@ export class NewArticleComponent implements OnInit {
           body: this.userInputs.value.body,
           tagList: this.userInputs.value.tags.split(",")
         }
-      }).subscribe(data => console.log(data))
+      }).subscribe(data => {
+        this.route.navigate(['/'])
+      })
     }
   }
 

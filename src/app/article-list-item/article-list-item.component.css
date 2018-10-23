@@ -12,6 +12,10 @@
   color: #000000;
 }
 
+.more {
+  font-size: 0.8rem;
+}
+
 .favorite-btn {
   background: none;
   border: #C84E90 solid 1px;
