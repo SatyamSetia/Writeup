@@ -42,7 +42,6 @@ export class SignupPageComponent implements OnInit {
         }
       },
       () => {
-        console.log('signed up')
         this.route.navigate([''])
       }
     )
