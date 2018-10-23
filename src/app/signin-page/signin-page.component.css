@@ -5,3 +5,7 @@
 .error {
   color: #ff0000;
 }
+
+a:hover {
+  text-decoration: none;
+}
