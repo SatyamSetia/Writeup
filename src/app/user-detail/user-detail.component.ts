@@ -17,12 +17,16 @@ import { Subscription } from 'rxjs';
 })
 export class UserDetailComponent implements OnInit {
 
-  user: UserProfile;
+  user: UserProfile = {
+    username:''
+  };
   username: string;
   articles: Array<Article> = [];
   isFavArticleActive = false;
   isLoading: boolean = true;
-  currUser: User;
+  currUser: User = {
+    username: ''
+  };
   userIsCurrUser: boolean = false;
   usernameSubject = Subscription.EMPTY;
 
