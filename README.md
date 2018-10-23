@@ -31,6 +31,7 @@ Write a new article.
 Edit own older articles.
 Delete own articles.
 Favorite/Unfavorite articles.
+Infinite Scrolling (Pagination)
 ```
 
 ## Comments
