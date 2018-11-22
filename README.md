@@ -1,6 +1,6 @@
 # Writeup
 
-This project is completed with the aim of learning AngularJS. It was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4. Writeup is a Medium clone where one can write and share articles with various functionalities. It is created using the [Realworld Project API](https://conduit.productionready.io/api) where people can create accounts, write articles, and comment on others' articles.
+This project is completed with the aim of learning Angular. It was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4. Writeup is a Medium clone where one can write and share articles with various functionalities. It is created using the [Realworld Project API](https://conduit.productionready.io/api) where people can create accounts, write articles, and comment on others' articles.
 
 Check the demo of this project [here](https://writeup.netlify.com)
 
